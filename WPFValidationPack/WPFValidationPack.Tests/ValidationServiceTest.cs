@@ -121,10 +121,10 @@
             }
         }
 
-        public void RaiseErrorsChangedEvent(DataErrorsChangedEventArgs e)
+        public void RaiseErrorsChangedEvent(string p)
         {
             if (ErrorsChanged != null)
-                ErrorsChanged(this, e);
+                ErrorsChanged(this, new DataErrorsChangedEventArgs(p));
         }
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;

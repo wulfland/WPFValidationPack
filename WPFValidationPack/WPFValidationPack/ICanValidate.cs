@@ -10,6 +10,6 @@
         void Validate();
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1030:UseEventsWhereAppropriate")]
-        void RaiseErrorsChangedEvent(DataErrorsChangedEventArgs e);
+        void RaiseErrorsChangedEvent(string propertyName);
     }
 }

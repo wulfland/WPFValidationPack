@@ -4,11 +4,13 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel;
-using System.Linq.Expressions;
+    using System.Linq.Expressions;
 
     public abstract class ValidationBase : ICanValidate, INotifyPropertyChanged
     {
-        public abstract IEnumerable<IValidator> Validators { get;  }
+        Dictionary<string, object> propertyValueStorage = new Dictionary<string, object>();
+
+        public abstract IEnumerable<IValidator> Validators { get; }
 
         public void Validate()
         {
@@ -49,20 +51,53 @@ using System.Linq.Expressions;
             Validate(propertyName);
         }
 
-        public void RaiseErrorsChangedEvent(DataErrorsChangedEventArgs e)
+        public void RaiseErrorsChangedEvent(string propertyName)
         {
             if (ErrorsChanged != null)
-                ErrorsChanged(this, e);
+                ErrorsChanged(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
 
-        public void RaisePropertyChangedEvent(PropertyChangedEventArgs e)
+        public void RaisePropertyChangedEvent(string propertyName)
         {
             if (PropertyChanged != null)
-                PropertyChanged(this, e);
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private string GetPropertyName(LambdaExpression lambda)
+        protected T GetValue<T>(Expression<Func<T>> property)
+        {
+            var lambda = property as LambdaExpression;
+
+            if (lambda == null)
+                throw new ArgumentException("Invalid lambda expression.");
+
+            var propertyName = GetPropertyName(lambda);
+
+            return GetValueInternal<T>(propertyName);
+        }
+
+        protected void SetValue<T>(Expression<Func<T>> property, T value)
+        {
+            var lambdaExpression = property as LambdaExpression;
+
+            if (lambdaExpression == null)
+                throw new ArgumentException("Invalid lambda expression.");
+
+            var propertyName = GetPropertyName(lambdaExpression);
+
+            T storedValue = GetValueInternal<T>(propertyName);
+
+            if (!value.Equals(storedValue))
+            {
+                this.propertyValueStorage[propertyName] = value;
+
+                RaisePropertyChangedEvent(propertyName);
+                Validate(propertyName);
+            }
+
+        }
+
+        private static string GetPropertyName(LambdaExpression lambda)
         {
             if (lambda.Body is UnaryExpression)
             {
@@ -76,6 +111,12 @@ using System.Linq.Expressions;
                 var memberExpression = lambda.Body as MemberExpression;
                 return memberExpression.Member.Name;
             }
+        }
+
+        private T GetValueInternal<T>(string propertyName)
+        {
+            object value;
+            return propertyValueStorage.TryGetValue(propertyName, out value) ? (T)value : default(T);
         }
     }
 }

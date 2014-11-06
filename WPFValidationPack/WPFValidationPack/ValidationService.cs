@@ -38,7 +38,7 @@
                 {
                     validator.LastStatus = hasError;
 
-                    source.RaiseErrorsChangedEvent(new DataErrorsChangedEventArgs(validator.PropertyName));
+                    source.RaiseErrorsChangedEvent(validator.PropertyName);
                 }
             }
         }
