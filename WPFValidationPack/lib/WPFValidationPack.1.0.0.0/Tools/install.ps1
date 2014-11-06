@@ -6,6 +6,9 @@ function Set-FileBuildAction($project, $fileName, $buildAction, $customTool)
 	$file = $folder.ProjectItems.Item($fileName)
 	$itemTypeProperty = $file.Properties.Item("ItemType")
 	$itemTypeProperty.Value = $buildAction;
+
+	#$file.Properties.Item("Generator").Value = $customTool;
+	#$file.Properties.Item("SubType").Value = "Designer";
 }
 
 function Add-ResourceDictionary($project, $filename)
@@ -18,3 +21,5 @@ function Add-ResourceDictionary($project, $filename)
 }
 
 Set-FileBuildAction $project "CommonStyles.xaml" "Page" "MSBuild:Compile"
+
+#Add-ResourceDictionary $project ""

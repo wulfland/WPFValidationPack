@@ -58,7 +58,8 @@
     <Compile Include="ValidationService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.xaml.transform" />
+    <None Include="App.xaml.uninstall.xdt" />
+    <None Include="App.xaml.install.xdt" />
     <None Include="WPFValidationPack.nuspec" />
     <None Include="key.snk" />
     <None Include="Tools\install.ps1" />
@@ -83,7 +84,8 @@
       mkdir "$(TargetDir)packages\content\Resources"
       copy /Y "$(ProjectDir)Resources\*" "$(TargetDir)packages\content\Resources"
 
-      copy /Y "$(ProjectDir)App.xaml.transform" "$(TargetDir)packages\content\App.xaml.transform"
+      copy /Y "$(ProjectDir)App.xaml.install.xdt" "$(TargetDir)packages\content\App.xaml.install.xdt"
+      copy /Y "$(ProjectDir)App.xaml.uninstall.xdt" "$(TargetDir)packages\content\App.xaml.uninstall.xdt"
 
       copy /Y "$(ProjectDir)$(ProjectName).nuspec" "$(TargetDir)packages\"
       "$(SolutionDir).nuget\NuGet.exe" pack "$(TargetDir)packages\$(ProjectName).nuspec" -OutputDirectory "$(TargetDir)packages"

@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFValidationPack.Tests", "WPFValidationPack.Tests\WPFValidationPack.Tests.csproj", "{B5E6CAF2-6729-46F1-A0FC-843DD6A20225}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFValidationPack.SampleApp", "WPFValidationPack.SampleApp\WPFValidationPack.SampleApp.csproj", "{BACFDDEF-E230-4608-8F7C-2202232D826F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{E7C8D9DF-542B-4F35-BC26-8872AD815A1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +31,15 @@ Global
 		{B5E6CAF2-6729-46F1-A0FC-843DD6A20225}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5E6CAF2-6729-46F1-A0FC-843DD6A20225}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5E6CAF2-6729-46F1-A0FC-843DD6A20225}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BACFDDEF-E230-4608-8F7C-2202232D826F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BACFDDEF-E230-4608-8F7C-2202232D826F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BACFDDEF-E230-4608-8F7C-2202232D826F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BACFDDEF-E230-4608-8F7C-2202232D826F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BACFDDEF-E230-4608-8F7C-2202232D826F} = {E7C8D9DF-542B-4F35-BC26-8872AD815A1C}
 	EndGlobalSection
 EndGlobal
