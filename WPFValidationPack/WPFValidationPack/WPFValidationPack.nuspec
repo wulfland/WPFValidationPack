@@ -6,11 +6,11 @@
     <title>WPFValidationPack</title>
     <authors>Michael Kaufmann</authors>
     <owners>Michael Kaufmann</owners>
-    <licenseUrl>http://fakeurl</licenseUrl>
-    <projectUrl>http://fakeurl</projectUrl>
-    <iconUrl>http://fakeurl</iconUrl>
+    <licenseUrl>http://creativecommons.org/licenses/by/3.0/deed.de</licenseUrl>
+    <projectUrl>https://github.com/wulfland/WPFValidationPack</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/wulfland/WPFValidationPack/master/WPFValidationPack/WPFValidationPack/Logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>This package provides common functions for all WPF applications.</description>
+    <description>This package provides reusable validation for WPF applications.</description>
     <dependencies>
       <group targetFramework=".NETFramework4.5">
       </group>
