@@ -17,6 +17,11 @@
             ValidationService.Validate(this);
         }
 
+        public void ValidateAll()
+        {
+            ValidationService.ValidateAll(this);
+        }
+
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
         public event PropertyChangedEventHandler PropertyChanged;

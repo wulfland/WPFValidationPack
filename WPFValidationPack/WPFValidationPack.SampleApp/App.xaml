@@ -2,9 +2,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <ResourceDictionary x:Key="Common" Source="Resources/CommonStyles.xaml"/>
-                </ResourceDictionary>
+                <ResourceDictionary Source="Resources/CommonStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

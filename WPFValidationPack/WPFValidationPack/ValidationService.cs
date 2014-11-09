@@ -1,15 +1,20 @@
 ﻿namespace WPFValidationPack
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Linq;
+    using System.Reflection;
 
     public static class ValidationService
     {
         public static bool HasErrors(ICanValidate source)
         {
-            return source.Validators.Any(v => v.LastStatus);
+            bool hasErrors = false;
+
+            DoForAllNested(source, (v) => hasErrors = hasErrors || v.Validators.Any(x => x.LastStatus));
+
+            return hasErrors;
         }
 
         public static IEnumerable GetErrors(ICanValidate source, string propertyName)
@@ -28,6 +33,11 @@
             DoValidation(source, validators);
         }
 
+        public static void ValidateAll(ICanValidate parent)
+        {
+            DoForAllNested(parent, (v) => DoValidation(v, v.Validators));
+        }
+
         private static void DoValidation(ICanValidate source, IEnumerable<IValidator> validators)
         {
             foreach (var validator in validators)
@@ -39,6 +49,26 @@
                     validator.LastStatus = hasError;
 
                     source.RaiseErrorsChangedEvent(validator.PropertyName);
+                }
+            }
+        }
+
+        private static void DoForAllNested(ICanValidate parent, Action<ICanValidate> action)
+        {
+            if (parent == null)
+                return;
+
+            action(parent);
+
+            var i = typeof(ICanValidate);
+            var properties = parent.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (var property in properties)
+            {
+                if (i.IsAssignableFrom(property.PropertyType))
+                {
+                    var child = property.GetValue(parent) as ICanValidate;
+                    DoForAllNested(child, action);
                 }
             }
         }

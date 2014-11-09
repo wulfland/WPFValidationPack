@@ -4,6 +4,7 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using FluentAssertions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -68,7 +69,7 @@
         public void ValidationService_Can_Validate_Single_Property()
         {
             ValidationService.Validate(this, "PhoneNumberProperty");
-            
+
             HasErrors.Should().BeFalse();
 
             ValidationService.Validate(this, "RequiredTextProperty");
@@ -94,6 +95,21 @@
             eventCalled.Should().Be(2, "error was removed");
         }
 
+        [TestMethod]
+        public void ValidationService_Can_Validate_Nested_Models()
+        {
+            this.RequiredTextProperty = "Text";
+            this.NestedProperty = new FakeModel();
+
+            ValidationService.Validate(this);
+
+            HasErrors.Should().BeFalse();
+
+            ValidationService.ValidateAll(this);
+
+            HasErrors.Should().BeTrue();
+        }
+
         #region TestProperties
 
         public string PhoneNumberProperty { get; set; }
@@ -108,6 +124,8 @@
             int output;
             return int.TryParse(input, out output);
         }
+
+        public FakeModel NestedProperty { get; set; }
 
         #endregion
 
@@ -148,5 +166,23 @@
             ValidationService.Validate(this);
         }
         #endregion
+    }
+
+    public class FakeModel : ValidationBase
+    {
+        IEnumerable<IValidator> validators;
+
+        public FakeModel()
+        {
+            validators = new DataAnnotationValidatorCollection<FakeModel>(this);
+        }
+
+        [Required]
+        public string Required { get; set; }
+
+        public override IEnumerable<IValidator> Validators
+        {
+            get { return validators; }
+        }
     }
 }
