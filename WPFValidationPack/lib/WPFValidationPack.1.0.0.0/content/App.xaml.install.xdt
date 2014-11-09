@@ -4,10 +4,7 @@
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries xdt:Transform="InsertIfMissing" />
       <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary xdt:Transform="InsertIfMissing" />
-        <ResourceDictionary>
-          <ResourceDictionary x:Key="Common" Source="Resources/CommonStyles.xaml" xdt:Transform="Insert" />
-        </ResourceDictionary>
+        <ResourceDictionary Source="Resources/CommonStyles.xaml" xdt:Transform="Insert" />
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Application.Resources>

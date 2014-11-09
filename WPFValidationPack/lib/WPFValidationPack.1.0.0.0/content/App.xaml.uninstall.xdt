@@ -2,9 +2,7 @@
   <Application.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary>
-          <ResourceDictionary x:Key="Common" Source="Resources/CommonStyles.xaml" xdt:Locator="Match(x:Key)" xdt:Transform="Remove" />
-        </ResourceDictionary>
+          <ResourceDictionary Source="Resources/CommonStyles.xaml" xdt:Locator="Match(Source)" xdt:Transform="Remove" />
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Application.Resources>
