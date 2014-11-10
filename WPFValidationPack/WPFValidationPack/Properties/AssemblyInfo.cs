@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Resources;
 using System;
+using System.Windows.Markup;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -38,4 +39,5 @@ using System;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
 [assembly: CLSCompliant(true)]
+[assembly: XmlnsDefinition("http://schemas.wpfvalidation.com/validation", "WPFValidationPack")]
 [assembly: InternalsVisibleTo("WPFValidationPack.Tests, PublicKey=002400000480000094000000060200000024000052534131000400000100010081970b18502ce10a7efde1413c0c585a54ed4ba4f72a406eb29050a19c00277bf56eee15a9515fb9cbeaddb13f1179637e2729025115a3ef9f5465b7ab35302e2e539613dd5b77bc8512ad31fc03ba033a50c3d6b570f8bf42c49f69b2b4fe392004fc5287bcd77f5b040d1c1df2c3ad956a43679d85b97af7f26aa167b5edb3")]

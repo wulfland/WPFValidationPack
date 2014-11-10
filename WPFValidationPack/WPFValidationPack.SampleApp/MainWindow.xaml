@@ -1,8 +1,10 @@
 ﻿<Window x:Class="WPFValidationPack.SampleApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        xmlns:local="clr-namespace:WPFValidationPack.SampleApp.ViewModel"
-        Title="MainWindow" Height="350" Width="610">
+        xmlns:local="clr-namespace:WPFValidationPack.SampleApp.ViewModel" 
+        xmlns:main="clr-namespace:WPFValidationPack.SampleApp" 
+        xmlns:validatopnPack="http://schemas.wpfvalidation.com/validation"
+        Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
@@ -44,15 +46,16 @@
                     <TextBlock><Bold>Model with base class</Bold></TextBlock>
                     <TextBlock>Trigger: PropertyChanged</TextBlock>
                     <TextBlock>Name<Span>*</Span></TextBlock>
-                    <TextBox Text="{Binding ModelWithBase.Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <TextBox Text="{Binding ModelWithBase.Name, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Email<Span>*</Span></TextBlock>
-                    <TextBox Text="{Binding ModelWithBase.Email, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <TextBox Text="{Binding ModelWithBase.Email, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Repeat the Email<Span>*</Span></TextBlock>
-                    <TextBox Text="{Binding ModelWithBase.RepeatedEmail, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <TextBox Text="{Binding ModelWithBase.RepeatedEmail, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Phone</TextBlock>
-                    <TextBox Text="{Binding ModelWithBase.Phone, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <TextBox Text="{Binding ModelWithBase.Phone, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Mobile</TextBlock>
-                    <TextBox Text="{Binding ModelWithBase.Mobile, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <TextBox Text="{Binding ModelWithBase.Mobile, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Mode=TwoWay}" />
+                    <validatopnPack:ValidationSummary  ValidationScope="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}" />
                 </StackPanel>
             </Border>
             <Border Style="{StaticResource Frame}">
@@ -60,15 +63,16 @@
                     <TextBlock><Bold>Model without base class</Bold></TextBlock>
                     <TextBlock>Trigger: LostFocus</TextBlock>
                     <TextBlock>Name<Span>*</Span></TextBlock>
-                    <TextBox Text="{Binding ModelWithoutBase.Name, UpdateSourceTrigger=LostFocus, Mode=TwoWay}" />
+                    <TextBox Text="{Binding ModelWithoutBase.Name, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Email<Span>*</Span></TextBlock>
-                    <TextBox Text="{Binding ModelWithoutBase.Email, UpdateSourceTrigger=LostFocus, Mode=TwoWay}" />
+                    <TextBox Text="{Binding ModelWithoutBase.Email, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Repeat the Email<Span>*</Span></TextBlock>
-                    <TextBox Text="{Binding ModelWithoutBase.RepeatedEmail, UpdateSourceTrigger=LostFocus, Mode=TwoWay}" />
+                    <TextBox Text="{Binding ModelWithoutBase.RepeatedEmail, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Phone</TextBlock>
-                    <TextBox Text="{Binding ModelWithoutBase.Phone, UpdateSourceTrigger=LostFocus, Mode=TwoWay}" />
+                    <TextBox Text="{Binding ModelWithoutBase.Phone, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Mobile</TextBlock>
-                    <TextBox Text="{Binding ModelWithoutBase.Mobile, UpdateSourceTrigger=LostFocus, Mode=TwoWay}" />
+                    <TextBox Text="{Binding ModelWithoutBase.Mobile, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, Mode=TwoWay}" />
+                    <validatopnPack:ValidationSummary ValidationScope="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}}" />
                 </StackPanel>
             </Border>
             <Border Style="{StaticResource Frame}">
@@ -76,17 +80,18 @@
                     <TextBlock><Bold>ViewModel with validation</Bold></TextBlock>
                     <TextBlock>validation is handled in viewmodel.</TextBlock>
                     <TextBlock>Name<Span>*</Span></TextBlock>
-                    <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Email<Span>*</Span></TextBlock>
-                    <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Repeat the Email<Span>*</Span></TextBlock>
-                    <TextBox Text="{Binding RepeatedEmail, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <TextBox Text="{Binding RepeatedEmail, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Phone</TextBlock>
-                    <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Mode=TwoWay}" />
                     <TextBlock>Mobile</TextBlock>
-                    <TextBox Text="{Binding Mobile, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    <TextBox Text="{Binding Mobile, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Mode=TwoWay}" />
                 </StackPanel>
             </Border>
+            <validatopnPack:ValidationSummary  ValidationScope="{Binding Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type main:MainWindow}}}" />
         </StackPanel> 
         <Button Command="{Binding SaveCommand}">Save</Button>
     </Grid>

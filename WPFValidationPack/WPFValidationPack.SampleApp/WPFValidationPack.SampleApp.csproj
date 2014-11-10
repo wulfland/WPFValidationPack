@@ -52,7 +52,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFValidationPack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=68183be2e66c3d1e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\WPFValidationPack.1.0.0.0\lib\net45\WPFValidationPack.dll</HintPath>
+      <HintPath>..\lib\WPFValidationPack.1.0.1.0\lib\net45\WPFValidationPack.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

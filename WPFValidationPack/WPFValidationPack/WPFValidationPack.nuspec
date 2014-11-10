@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>WPFValidationPack</id>
-    <version>1.0.0.0</version>
+    <version>1.0.1.0</version>
     <title>WPFValidationPack</title>
     <authors>Michael Kaufmann</authors>
     <owners>Michael Kaufmann</owners>
@@ -11,6 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/wulfland/WPFValidationPack/master/WPFValidationPack/WPFValidationPack/Logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This package provides reusable validation for WPF applications.</description>
+    <tags>WPF,validation,INotifyDataErrorInfo</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.5">
       </group>
